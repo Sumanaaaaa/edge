@@ -673,26 +673,21 @@ div.mat-mdc-select-panel {
   height: 26px;
 }
 
-
-body .cdk-overlay-container .cdk-overlay-pane.tests-retrieve-process-class {
-  /* 1. Force the position out of 'static' regardless of screen size */
+/* Center ONLY the dialog panel — not dropdowns */
+.cdk-overlay-pane.tests-retrieve-process-class.mat-mdc-dialog-panel {
   position: fixed !important;
-
-  /* 2. Manually anchor to center */
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
 
-  /* 3. Force the size to match the 'good' screenshot */
-  height: auto !important;
   width: 500px !important;
   min-width: 500px !important;
   max-height: 80vh !important;
 
-  /* 4. Reset layout behavior */
   display: flex !important;
   flex-direction: column !important;
 }
+
 
 /* Force the internal component to stop stretching vertically */
 .tests-retrieve-process-class .component-container {
@@ -701,4 +696,13 @@ body .cdk-overlay-container .cdk-overlay-pane.tests-retrieve-process-class {
   /* This removes the grid '1fr' behavior causing the stretch */
   grid-template-rows: unset !important;
 }
+
+.cdk-overlay-pane.mat-mdc-select-panel {
+  position: absolute !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  max-width: none !important;
+}
+
 
