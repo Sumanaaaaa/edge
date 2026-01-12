@@ -217,11 +217,13 @@ export class ScreenService
       `background-color: black`;
     self.renderer.setAttribute(document.body, 'style', bodyStyle);
 
-    const containerStyle: string =
-      `width: ${vWidth}px !important;` +
-      `height: 100% !important;` +
-      `top: 0 !important;`;
-    self.renderer.setAttribute(self.overlayContainer.getContainerElement(), 'style', containerStyle);
+  const overlay = self.overlayContainer.getContainerElement();
+  self.renderer.setStyle(overlay, 'width', `${vWidth}px`);
+  self.renderer.setStyle(overlay, 'height', `${vHeight}px`);
+  self.renderer.setStyle(overlay, 'position', 'fixed');
+  self.renderer.setStyle(overlay, 'top', `${marginV}px`);
+  self.renderer.setStyle(overlay, 'left', `${marginH}px`);
+
 
     self.postResizeEvent(viewportWidth, prioritizeWidth ? windowHeight / scaleFactor : viewportHeight, scaleFactor, rotated, marginH, marginV);
   }
