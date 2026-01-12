@@ -1,0 +1,43 @@
+<div #component
+    class="component-container"
+    [class]="getDefaultStyle()"
+    [ngClass]="nxClass">
+
+    <mat-form-field
+        class="component-content"
+        [appearance]="appearance"
+        (click)="beforeOpen()">
+
+        <mat-label
+            *ngIf="showLabel">
+            {{placeholder}}
+        </mat-label>
+
+        <mat-select
+            #gxDropdownSelect
+            [id]="id"
+            (closed)="afterClose()"
+            [(value)]="itemKey"
+            [placeholder]="placeholder"
+            (selectionChange)="onSelectionChange($event)"
+            [multiple]="multiple"
+            [disabled]="disabled"
+            [disableOptionCentering]="disableOptionCentering">
+
+            <mat-option
+                *ngFor="let item of selections"
+                [value]="item.key"
+                [ngStyle]="optionStyleObject">
+                {{item.val}}
+            </mat-option>
+
+        </mat-select>
+
+        <a matPrefix
+           [ngClass]="disabled?'text-muted':''">
+            {{prefix}}
+        </a>
+
+    </mat-form-field>
+
+</div>
